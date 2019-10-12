@@ -21,16 +21,16 @@ func binarySearch<T:Comparable>(inputArray:Array<T>,
     completion(nil, false)
 }
 
-var testBinarySearchArray = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11];
-let searchNumber = 7
-binarySearch(inputArray: testBinarySearchArray,
-             searchNumber: searchNumber) { (index, success) in
-    if success {
-        print("the number \(searchNumber) is at the index \(index!) in the array")
-    } else {
-        print("there is no such number in the array")
-    }
-}
+//var testBinarySearchArray = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11];
+//let searchNumber = 7
+//binarySearch(inputArray: testBinarySearchArray,
+//             searchNumber: searchNumber) { (index, success) in
+//    if success {
+//        print("the number \(searchNumber) is at the index \(index!) in the array")
+//    } else {
+//        print("there is no such number in the array")
+//    }
+//}
 // n: O(log2 n)
 // m: O(1)
 
