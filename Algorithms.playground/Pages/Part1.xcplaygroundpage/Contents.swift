@@ -72,7 +72,7 @@ func searchNumbersForSum(inputArray:Array<Int>,
 //        print("fail")
 //    }
 //}
-// n: O(log2 n)
+// n: О(n*log2(n))
 // m: O(1)
 
 
@@ -166,11 +166,9 @@ func taskSix() {
     let setA = Set(arrayA)
     var coincidence = 0
     for num in setA {
-        if arrayB.contains(num) {
-            for i in arrayB {
-                if i == num {
-                    coincidence += 1
-                }
+        for i in arrayB {
+            if i == num {
+                coincidence += 1
             }
         }
     }
@@ -178,5 +176,27 @@ func taskSix() {
 }
 
 //taskSix()
-// n: O(n^2)
-// m: O(1)
+// n: O(n^2) || O(Na*Nb)
+// m: О(Na)
+
+//MARK: - 7) Дано два положительных целых числа. Найти расстояние Хэмминга  для двоичного и для десятичного представления чисел.
+
+func hammingDistance(x: Int, y: Int) -> Int {
+    let signedDifferentBits = x ^ y
+    var differentBits: Int = signedDifferentBits
+    var counter = 0
+    while differentBits > 0 {
+        let maskedBits = differentBits & 1
+        if maskedBits != 0 { counter += 1 }
+        differentBits = differentBits >> 1
+    }
+    return counter
+}
+
+//let x = 3
+//let y = 7
+//let hd = hammingDistance(x: x, y: y)
+//print("Hamming Distance between \(x) and \(y) = \(hd)")
+
+// n: O(n) //n - differentBits
+// m: О(1)
