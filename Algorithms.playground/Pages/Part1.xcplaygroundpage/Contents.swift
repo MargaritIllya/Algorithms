@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 //MARK: - 1) Реализовать бинарный поиск числа в массиве.
 
