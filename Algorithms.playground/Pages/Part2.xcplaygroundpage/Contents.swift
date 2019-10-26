@@ -24,7 +24,6 @@ func countingSort(array: Array<Int>) -> Array<Int> {
 //let sortArray = countingSort(array: array)
 //print("counting sort \(sortArray)")
 
-
 //MARK: - 2) Блочная сортировка (Bucket sort)
 
 func bucketSort(array: Array<Int>) -> Array<Int> {
