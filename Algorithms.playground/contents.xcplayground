@@ -5,5 +5,7 @@
         <page name='Part2'/>
         <page name='Part3'/>
         <page name='Part4'/>
+        <page name='Part5'/>
+        <page name='Graph'/>
     </pages>
 </playground>
