@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios'>
     <pages>
-        <page name='Part1'/>
-        <page name='Part2'/>
-        <page name='Part3'/>
-        <page name='Part4'/>
-        <page name='Part5'/>
-        <page name='Graph'/>
+        <page name='Part1 - Tasks'/>
+        <page name='Part2 - Sort'/>
+        <page name='Part3 - List'/>
+        <page name='Part4 - Recursion'/>
+        <page name='Part5 - Hash'/>
+        <page name='Part6 - Graph'/>
     </pages>
 </playground>

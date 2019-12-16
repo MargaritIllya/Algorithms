@@ -77,7 +77,7 @@ func searchNumbersForSum(inputArray:Array<Int>,
 
 
 //MARK: - 3) Транспонировать матрицу
-//  не лучшее решение
+
 func matrixTask3() {
 
     typealias Matrix = [[Int]]

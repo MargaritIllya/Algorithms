@@ -130,7 +130,7 @@ func detectLoop(in list: ListNode?) -> Bool {
 //let test2 = detectLoop(in: listWithLoop)
 
 
-//MARK: - 4) Ханойские башни
+//MARK: - 3) Ханойские башни
 
 func hanoi(count: Int,      //count - Number of discs to move
            from: String,    //from - original pin

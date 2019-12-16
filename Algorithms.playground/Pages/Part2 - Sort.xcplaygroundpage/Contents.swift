@@ -106,3 +106,26 @@ func quickSort<T: Comparable>(array: [T]) -> [T] {
 //let sortArray = quickSort(array: array)
 //print("quick sort: \(sortArray)")
 
+//MARK: - 5) Bubble Sort
+
+func bubbleSort(sortArray: Array<Int>) -> Array<Int> {
+    
+    var array = sortArray
+    for i in 0..<array.count {
+        var isSorted = true
+        for j in 1..<array.count - i {
+            if array[j] < array[j-1] {
+                let tmp = array[j-1]
+                array[j-1] = array[j]
+                array[j] = tmp
+                isSorted = false
+            }
+        }
+        if isSorted { break }
+    }
+    return array
+}
+//var bubbleSortArray = [1, 5, 0, 2, 9, 12]
+//let newArray = bubbleSort(sortArray: bubbleSortArray)
+//print(newArray)
+//O(n^2)

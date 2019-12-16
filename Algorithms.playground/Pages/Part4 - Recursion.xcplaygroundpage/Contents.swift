@@ -2,7 +2,7 @@ import Foundation
 
 //MARK: - Recursion
 
-//MARK: Factorial Cycle
+//MARK: 1) Factorial Cycle
 
 func factorialWithCycle(c: Int) -> Int {
     var res = 1
@@ -10,21 +10,21 @@ func factorialWithCycle(c: Int) -> Int {
     return res
 }
 
-//MARK: Factorial Рекурсия
+//MARK: 2) Factorial Recursion
 
 func factorialRecursion(c: Int) -> Int {
     if c == 2 { return c }
     return factorialRecursion(c: c - 1) * c
 }
 
-//MARK: Factorial Хвостовая Рекурсия
+//MARK: 3) Factorial (Хвостовая Рекурсия)
 
 func factRecursion(c: Int, p: Int) -> Int {
     if c == 2 { return c * p }
     return factRecursion(c: c - 1, p: c * p)
 }
 
-//MARK: Min Array (Recursion)
+//MARK: 4) Min Array (Recursion)
 
 func min(arr: [Int], index: Int) -> Int {
     if index == arr.count - 1 { return arr[index] }
@@ -40,7 +40,7 @@ func min(arr: [Int]) -> Int {
 //array.min()
 //min(arr: array)
 
-//MARK: Aлгоритм Евклида
+//MARK: 5) Aлгоритм Евклида
 
 //example 1
 func gcd1(x: Int, y: Int) -> Int {
@@ -66,7 +66,7 @@ func gcd2(a: Int, b: Int) -> Int {
 }
 //gcd2(a: 10, b: 16)
 
-//MARK: - 1) Вычислить 10е число ряда Фибоначчи обычной и хвостовой рекурсией
+//MARK: - 6) Вычислить 10е число ряда Фибоначчи обычной и хвостовой рекурсией
 
 //Обычная рекурсия
 func fibonacchi(n: Int) -> Int {
@@ -85,7 +85,7 @@ func fib(n: Int) -> Int {
 }
 //fib(n: 10)
 
-//MARK: - 2) Вычислить сумму 10 чисел ряда Фибоначчи с помощью рекурсии.
+//MARK: - 7) Вычислить сумму 10 чисел ряда Фибоначчи с помощью рекурсии.
 
 func sumFib(n: Int) -> Int {
     var s = 0
@@ -97,7 +97,7 @@ func sumFib(n: Int) -> Int {
 }
 //sumFib(n: 10)
 
-//MARK: - 3) Узнать можно ли пройти по двумерному массиву от нулевой ячейки до последней. 1 - можно идти, 0 - нельзя. Можно двигаться только вправо и вниз.
+//MARK: - 8) Узнать можно ли пройти по двумерному массиву от нулевой ячейки до последней. 1 - можно идти, 0 - нельзя. Можно двигаться только вправо и вниз.
 
 let m = [/*start --> */[1, 0, 0, 0, 1],
                        [1, 1, 0, 0, 0],
@@ -128,11 +128,11 @@ func findPath(grid: [[Int]], row: Int, col: Int) -> Bool {
     return findPath(grid: grid, row: row, col: col + 1) ||
            findPath(grid: grid, row: row + 1, col: col)
 }
-let startIndex = 0
+//let startIndex = 0
 //findPath(grid: m, row: startIndex, col: startIndex)
 
 
-//MARK: - 4) Дан двумерный массив. 1 обозначает землю, 0 - воду. Найти количество островов. Земля соединяется только рядом стоящими ячейками. По диагонали земля не соединяется.
+//MARK: - 9) Дан двумерный массив. 1 обозначает землю, 0 - воду. Найти количество островов. Земля соединяется только рядом стоящими ячейками. По диагонали земля не соединяется.
 
 let matrix = [[1, 0, 0, 0, 1],
               [1, 1, 0, 1, 0],
