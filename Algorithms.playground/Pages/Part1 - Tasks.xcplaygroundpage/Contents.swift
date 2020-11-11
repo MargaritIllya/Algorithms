@@ -249,3 +249,104 @@ func removeDuplicates(array: inout [Int]) -> [Int] {
 //let result = removeDuplicates(array: &array)
 //print(result)
 // O(n)
+
+//MARK: - 9) Найти самый короткий несортированный непрерывный подмассив
+/*
+ На вход подается массив, в этом массиве нужно найти такой подмассив, который,
+ если вы отсортируете в порядке возрастания, отсортирует весь массив в порядке возрастания
+ */
+
+func unsortedSubarrayLength(array: [Int]) -> Int {
+    let n = array.count
+    if n == 0 { return 0 }
+    var maxNum = array[0]
+    var minNum = array[n - 1]
+    var start = 1
+    var end = 0
+    for (index, currentItem) in array.enumerated() {
+        maxNum = max(maxNum, currentItem)
+        minNum = min(minNum, array[n - 1 - index])
+        if currentItem < maxNum {
+            end = index
+        }
+        if array[n - 1 - index] > minNum {
+            start = n - 1 - index
+        }
+    }
+    return end - start + 1
+}
+
+//let result = unsortedSubarrayLength(array: [1, 6, 6, 2, 3, 8])
+//print(result)
+
+//MARK: - 10) Обратная строка
+
+func reverseString(_ string: inout [Character]) {
+    var last = string.count - 1
+    var first: Int = 0
+    while first < last {
+        (string[first], string[last]) = (string[last], string[first])
+        first += 1
+        last -= 1
+    }
+}
+
+//var charArray: [Character] = ["H", "e", "l", "l", "o", "!"]
+//reverseString(&charArray)
+// n: O(n)
+// m: О(1)
+
+//MARK: - 11) Вернуть true, если в двух строках между ними будет не более одного отличия
+
+func isOneAwaySomeLength(first: String, second: String) -> Bool {
+    var countDifferent = 0
+    for i in 0...first.count - 1 {
+        let firstIndex = first.index(first.startIndex, offsetBy: i)
+        let secondIndex = second.index(second.startIndex, offsetBy: i)
+        if first[firstIndex] != second[secondIndex] {
+            countDifferent += 1
+            if countDifferent > 1 {
+                return false
+            }
+        }
+    }
+    return countDifferent == 0 ? false : true
+}
+
+func isOneAwayDiffLength(first: String, second: String) -> Bool {
+    var countDifferent = 0
+    var i = 0
+    while i < second.count {
+        let firstIndex = first.index(first.startIndex, offsetBy: i + countDifferent)
+        let secondIndex = second.index(second.startIndex, offsetBy: i)
+        if first[firstIndex] == second[secondIndex] {
+            i += 1
+        } else {
+            countDifferent += 1
+            if countDifferent > 1 {
+                return false
+            }
+        }
+    }
+    return true
+}
+
+func isOneAway(first: String, second: String) -> Bool {
+    if first.count - second.count >= 2 ||
+        second.count - first.count >= 2 {
+        return false
+    } else if first.count == second.count {
+        return isOneAwaySomeLength(first: first, second: second)
+    } else if first.count > second.count {
+        return isOneAwayDiffLength(first: first, second: second)
+    } else {
+        return isOneAwayDiffLength(first: second, second: first)
+    }
+}
+
+//isOneAway(first: "hello", second: "hello")
+//isOneAway(first: "hello", second: "hell")
+//isOneAway(first: "hello", second: "hel")
+//isOneAway(first: "he", second: "hello")
+//isOneAway(first: "heljo", second: "hello")
+//isOneAway(first: "olleh", second: "hello")

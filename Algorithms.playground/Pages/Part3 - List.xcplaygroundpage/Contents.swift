@@ -5,6 +5,11 @@ import Foundation
 class ListNode {
     var value: Int?
     var next: ListNode?
+    
+    init(value: Int? = nil, next: ListNode? = nil) {
+        self.value = value
+        self.next = next
+    }
 }
 
 func createList(capacity: Int) -> ListNode? {
@@ -75,7 +80,27 @@ func listInLoop(list: ListNode?) -> ListNode? {
     return currentList
 }
 
-//MARK: - 1) Повернуть односвязный список на К элементов
+//MARK: - 1) Повернуть односвязный список
+
+func rotateList(list: ListNode) -> ListNode? {
+    var currentList: ListNode? = list
+    var prev: ListNode?
+    var next: ListNode?
+    while currentList != nil {
+        next = currentList?.next
+        currentList?.next = prev
+        prev = currentList
+        currentList = next
+    }
+    return prev
+}
+
+//let thirdNode = ListNode(value: 5, next: nil)
+//let secondNode = ListNode(value: 3, next: thirdNode)
+//let firstNode = ListNode(value: 1, next: secondNode)
+//printList(prtNode: rotateList(list: firstNode))
+
+//MARK: - 2) Повернуть односвязный список на К элементов
 
 func rotateList(list: ListNode, on element: Int) -> ListNode? {
     var count = 0
@@ -111,7 +136,39 @@ func rotateList(list: ListNode, on element: Int) -> ListNode? {
 //print("after")
 //printList(prtNode: rotate)
 
-//MARK: - 2) Проверить имеет ли односвязный список цикл
+//MARK: - 3) Объединить два отсортированных Linked List
+
+func mergeSortedLists(first: ListNode?, second: ListNode?) -> ListNode? {
+    guard first != nil else { return second }
+    guard second != nil else { return first }
+    
+    let dummyHead: ListNode = ListNode(value: 0, next: nil)
+    var l1 = first, l2 = second
+    var endOfSortedList: ListNode? = dummyHead
+    
+    while l1 != nil && l2 != nil {
+        if l1!.value! <= l2!.value! {
+            endOfSortedList?.next = l1
+            l1 = l1?.next
+        } else {
+            endOfSortedList?.next = l2
+            l2 = l2?.next
+        }
+        endOfSortedList = endOfSortedList?.next
+    }
+    endOfSortedList?.next = l1 == nil ? l2 : l1
+    return dummyHead
+}
+
+//let thirdNode = ListNode(value: 15, next: nil)
+//let secondNode = ListNode(value: 10, next: thirdNode)
+//let first = ListNode(value: 7, next: secondNode)
+//let second = createList(capacity: 5)
+//let result = mergeSortedLists(first: first, second: second)
+//printList(prtNode: result)
+//n = O(m + n)
+
+//MARK: - 4) Проверить имеет ли односвязный список цикл
 
 func detectLoop(in list: ListNode?) -> Bool {
     var slowPtr = list
@@ -130,7 +187,7 @@ func detectLoop(in list: ListNode?) -> Bool {
 //let test2 = detectLoop(in: listWithLoop)
 
 
-//MARK: - 3) Ханойские башни
+//MARK: - 5) Ханойские башни
 
 func hanoi(count: Int,      //count - Number of discs to move
            from: String,    //from - original pin
