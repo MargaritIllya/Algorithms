@@ -37,7 +37,9 @@ func binarySearch<T:Comparable>(inputArray:Array<T>,
 
 //MARK: - //2) Задан массив целых чисел и искомое число Т. Найти в массиве два числа, сумма которых равна Т.
 
-func searchNumbersForSum(inputArray:Array<Int>,
+//MARK: Example 1
+
+func searchNumbersForSum(inputArray: Array<Int>,
                          sum: Int,
                          completion: @escaping (Int?, Int?, Bool) -> Void) {
     
@@ -62,18 +64,44 @@ func searchNumbersForSum(inputArray:Array<Int>,
     completion(nil, nil, false); return
 }
 
-//let testSearchSumArray = [3, 7, 8, 1, 2, 4, 5, 6, 9, 10, 11, 48, 52];
-//let sum = 10
-//searchNumbersForSum(inputArray: testSearchSumArray,
-//                    sum: sum) { (num1, num2, success) in
-//    if success {
-//        print("\(sum) = \(num1!) + \(num2!)")
-//    } else {
-//        print("fail")
-//    }
-//}
-// n: О(n*log2(n))
-// m: O(1)
+//MARK: Example 2
+
+func searchNumbersForSum(inputArray: Array<Int>, sum: Int) -> Array<Int> {
+    var dict: [Int: Int] = [:]
+    var result: [Int] = []
+    for (i, j) in inputArray.enumerated() {
+        if let index = dict[sum - j] {
+            result.append(index)
+            result.append(i)
+            return result
+        }
+        dict[j] = i
+    }
+    return result
+}
+
+/*
+ //Test Example 1
+ 
+ let testSearchSumArray = [3, 7, 8, 1, 2, 4, 5, 6, 9, 10, 11, 48, 52];
+ let sum = 10
+ searchNumbersForSum(inputArray: testSearchSumArray,
+                     sum: sum) { (num1, num2, success) in
+     if success {
+         print("\(sum) = \(num1!) + \(num2!)")
+     } else {
+         print("fail")
+     }
+ }
+  n: О(n*log2(n))
+  m: O(1)
+ 
+ //Test Example 2
+
+ let testSearchSumArray = [3, 7, 8, 1, 2, 4, 5, 6, 9, 10, 11, 48, 52];
+ let sum = 5
+ print(searchNumbersForSum(inputArray: testSearchSumArray, sum: sum))
+ */
 
 
 //MARK: - 3) Транспонировать матрицу
@@ -200,3 +228,24 @@ func hammingDistance(x: Int, y: Int) -> Int {
 
 // n: O(n) //n - differentBits
 // m: О(1)
+
+//MARK: - 8) Удалить дубликаты из отсортированного массива.
+
+func removeDuplicates(array: inout [Int]) -> [Int] {
+    var index: Int = 0
+    var last: Int?
+    while index < array.count {
+        if array[index] == last {
+            array.remove(at: index)
+        } else {
+            last = array[index]
+            index += 1
+        }
+    }
+    return array
+}
+
+//var array = [0, 0, 1, 2, 2, 2, 3]
+//let result = removeDuplicates(array: &array)
+//print(result)
+// O(n)
